@@ -1,10 +1,10 @@
-const { review, hotel } = require('../models');
+const { review, hotel, user } = require('../models');
 
-const getAllReview = async (hotelId) => {
-  const where = hotelId  ? { hotelId } : {}
+const getAllReview = async (hotelId, userId) => {
+  const where = hotelId && userId ? { hotelId, userId } : {}
   return await review.findAll({
     where,
-    include: [hotel]
+    include: [hotel, user]
   });
 }
 
@@ -13,7 +13,7 @@ const createReview = async (body) => {
 }
 
 const getoneReview = async (id) => {
-  return await review.findByPk(id, { include: [hotel] } );
+  return await review.findByPk(id, { include: [hotel, user] } );
 }
 
 const putReview = async (body, id) => {

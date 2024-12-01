@@ -35,9 +35,9 @@ const remove = catchError(async (req, res) => {
 
 
 const login = catchError(async (req, res) => {
-  const resultUser = req.userLogin
+  const user = req.userlogged
   const token = req.token
-  return res.json({ user: resultUser, token })
+  return res.json({ user, token })
 })
 
 const logged = catchError(async (req, res) => {

@@ -2,13 +2,13 @@ const catchError = require('../utils/catchError');
 const { getAllReview, createReview, getoneReview, putReview, removeReview } = require('../services/review.services');
 
 const getAll = catchError(async (req, res) => {
-  const { hotelId } = req.query
-  const results = await getAllReview(hotelId);
+  const { hotelId, userId } = req.query
+  const results = await getAllReview(hotelId, userId);
   return res.json(results);
 });
 
 const create = catchError(async (req, res) => {
-  const result = await createReview(req.body);
+  const result = await createReview( { ...req.body, userId: req.user.id} );
   return res.status(201).json(result);
 });
 

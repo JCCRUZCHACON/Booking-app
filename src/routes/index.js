@@ -14,6 +14,6 @@ router.use('/cities', cityRouter)
 router.use('/hotels', hotelRouter)
 router.use('/images', verifyJWT, imageRouter)
 router.use('/bookings', verifyJWT, bookingRouter)
-router.use('/reviews', verifyJWT, reviewRouter)
+router.use('/reviews', reviewRouter)
 
 module.exports = router;
