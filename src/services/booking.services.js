@@ -1,10 +1,13 @@
-const { booking, hotel } = require('../models');
+const { booking, hotel, image, city } = require('../models');
 
 const getAllBooking = async (hotelId) => {
   const where = hotelId ? { hotelId } : {}
   return await booking.findAll({
-    where,
-    include: [hotel]
+    where,    //include anidadas: dentro del modelo hotel incluir a image y city
+    include: [{
+      model: hotel,
+      include: [image, city]
+    }]
   });
 }
 
@@ -12,8 +15,11 @@ const createBooking = async (body) => {
   return await booking.create(body);
 }
 
-const getoneBooking = async (id) => {
-  return await booking.findByPk(id, { include: [hotel] });
+const getoneBooking = async (id) => {  //include anidadas: dentro del modelo hotel incluir a image y city
+  return await booking.findByPk(id, { include: [{
+    model: hotel,
+    include: [image, city]
+  }]});
 }
 
 const putBooking = async (body, id) => {

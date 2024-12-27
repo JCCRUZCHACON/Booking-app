@@ -24,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'hotel',
         key: 'id'
-      }
+      },
+      onDelete: 'CASCADE', // Elimina las imágenes automáticamente
+      onUpdate: 'CASCADE', // Actualiza el hotelId si el id del hotel cambia
     }
   }, {
     sequelize,

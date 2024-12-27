@@ -29,15 +29,15 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'hotel',
         key: 'id'
-      }
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id'
+        }
+      }  
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
-    }
   }, {
     sequelize,
     modelName: 'review',

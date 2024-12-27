@@ -21,6 +21,8 @@ const removeServices = async (id) => {
   return await hotel.destroy({ where: { id } });
 };
 
+
+
 module.exports = {
   getAllServices,
   createServices,

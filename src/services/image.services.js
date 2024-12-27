@@ -1,7 +1,7 @@
-const { image, hotel } = require('../models');
+const { image, hotel, city } = require('../models');
 
 const getAllImage = async () => {
-  return await image.findAll( {include: [hotel]});
+  return await image.findAll( {include:[hotel]});
 }
 
 const createImage = async (body) => {

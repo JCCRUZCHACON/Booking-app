@@ -17,7 +17,6 @@ module.exports = {
       }
     })
   },
-  
 
   async down (queryInterface, Sequelize) {
     /**
@@ -29,3 +28,4 @@ module.exports = {
     await queryInterface.removeColumn('reviews', 'userId')
   }
 };
+
