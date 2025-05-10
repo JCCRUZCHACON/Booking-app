@@ -1,11 +1,15 @@
 const app = require('./app');
-const { exec } = require('child_process');
+// const { exec } = require('child_process');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const main = async () => {
   try {
-    app.listen(PORT);
+    // Cambié la configuración de listen para escuchar en todas las interfaces
+    app.listen(PORT, '::', () => {
+      console.log(`👉 Server running on port ${PORT}`);
+      console.log(`👉 Link http://localhost:${PORT}`);
+    });
     
     // Solo descomentar esta parte cuando sea necesario ejecutar migraciones
     // await new Promise((resolve, reject) => {
@@ -20,8 +24,6 @@ const main = async () => {
     //   migrate.stderr.pipe(process.stderr);
     // });
 
-    console.log(`👉 Server running on port ${PORT}`);
-    console.log(`👉 Link http://localhost:${PORT}`);
   } catch (error) {
     console.log(error);
   }
