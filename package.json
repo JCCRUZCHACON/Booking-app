@@ -5,11 +5,13 @@
   "main": "index.js",
   "bin": "./bin/cli/js",
   "scripts": {
-  "dev": "nodemon src/server",
-  "start": "node src/server",
-  "migrate": "npx sequelize db:migrate",  
+  "dev": "nodemon src/server",                     
+  "start": "node src/server",                       
+  "migrate": "npx sequelize db:migrate",            
+  "migrate:dev": "npx sequelize db:migrate --env development", 
+  "migrate:prod": "npx sequelize db:migrate --env production", 
   "test": "jest --detectOpenHandles",
-  "pretest": "npm run migrate"  
+  "pretest": "npm run migrate"                      
 },
   "keywords": [],
   "author": "",
