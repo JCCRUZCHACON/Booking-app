@@ -85,3 +85,7 @@ module.exports = {
     }
   }
 };
+
+
+
+DATABASE_URL=postgres://postgres:1784@127.0.0.1:5432/booking_app
