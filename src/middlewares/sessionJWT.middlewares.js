@@ -1,18 +1,24 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 const sessionJWT = (req, res, next) => {
+  try {
+    const user = req.userlogged;
+    if (!user) {
+      return res.status(401).json({ message: 'Usuario no autenticado' });
+    }
 
-  const user = req.userlogged
+    const token = jwt.sign(
+      { id: user.id, email: user.email }, // Evita pasar todo el user completo
+      process.env.TOKEN_SECRET,
+      { expiresIn: process.env.TOKEN_EXPIRES_IN || '1d' }
+    );
 
-  const token = jwt.sign(
-    { user },
-    process.env.TOKEN_SECRET,
-    { expiresIn: '1d' }
-  )
+    req.token = token;
+    next();
+  } catch (error) {
+    console.error('Error generando JWT:', error);
+    res.status(500).json({ message: 'Error en autenticación' });
+  }
+};
 
-  req.token = token
-  next()
-
-}
-
-module.exports = sessionJWT
+module.exports = sessionJWT;
