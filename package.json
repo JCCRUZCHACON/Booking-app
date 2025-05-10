@@ -5,12 +5,12 @@
   "main": "index.js",
   "bin": "./bin/cli/js",
   "scripts": {
-    "dev": "nodemon src/server",  
-    "start": "node src/server",   
-    "reset:migrate": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",  
-    "test": "jest --detectOpenHandles",  
-    "pretest": "npm run reset:migrate"  
-  },
+  "dev": "nodemon src/server",
+  "start": "node src/server",
+  "migrate": "npx sequelize db:migrate",  
+  "test": "jest --detectOpenHandles",
+  "pretest": "npm run migrate"  
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
