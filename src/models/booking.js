@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         model: 'hotel',
         key: 'id'
       }
+    },
+    desayuno:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     sequelize,
